@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Example Calendar App</string>
+    <string name="backwardmonth"><![CDATA[<=]]></string>
+    <string name="forwardmonth"><![CDATA[=>]]></string>
+</resources>
