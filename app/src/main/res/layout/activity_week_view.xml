@@ -6,19 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Weekly"
-        android:textColor="@color/blue"
-        android:background="@null"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:onClick="weeklyAction"
-        />
+    tools:context=".WeekViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +16,7 @@
         android:layout_marginTop="20dp"
         >
 
-        <!--Button viewable/xml to go back in the calender-->
+        <!--Button viewable/xml to go back weeks in the calendar-->
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,10 +26,10 @@
             android:background="@null"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:onClick="previousMonthAction"
+            android:onClick="previousWeekAction"
             />
 
-        <!--Current Month-->
+        <!--Current Week-->
         <TextView
             android:id="@+id/monthYearTextView"
             android:layout_width="0dp"
@@ -53,7 +41,7 @@
             android:textColor="@color/black"
             />
 
-        <!--Button viewable/xml to advance in the calender-->
+        <!--Button viewable/xml to advance weeks in the calendar-->
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -63,7 +51,7 @@
             android:background="@null"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:onClick="nextMonthAction"
+            android:onClick="nextWeekAction"
             />
     </LinearLayout>
 
@@ -141,7 +129,27 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Event"
+        android:textColor="@color/blue"
+        android:background="@null"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:onClick="newEventAction"
+        />
+    
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        />
+
 </LinearLayout>
     <!--androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" -->

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalendarAppExample">
         <activity
+            android:name=".EventEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WeekViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
