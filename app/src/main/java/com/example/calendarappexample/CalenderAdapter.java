@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
-    private final ArrayList<String> days;
+    private final ArrayList<LocalDate> days;
     private final OnItemListener onItemListener;
 
     public CalendarAdapter(ArrayList<LocalDate> days, OnItemListener onItemListener) {
@@ -30,7 +30,8 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
 
         //month view
         if(days.size() > 15)
-            layoutParams.height = (int) (parent.getHeight() * 0.166666666);
+            //6 rows that are proportional to the View
+            layoutParams.height = (int) (parent.getHeight() * (1 / 6));
         //week view
         else
             layoutParams.height = (int) (parent.getHeight());
@@ -55,6 +56,6 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
     }
     //On-click listener
     public interface OnItemListener {
-        void onItemClick(int position, String dayText);
+        void onItemClick(int position, LocalDate dayText);
     }
 }

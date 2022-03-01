@@ -44,7 +44,7 @@ public class CalendarUtils {
 
         while (current.isBefore(endDate)){
             days.add(current);
-            current.plusDays(1);
+            current = current.plusDays(1);
 
         }
 
