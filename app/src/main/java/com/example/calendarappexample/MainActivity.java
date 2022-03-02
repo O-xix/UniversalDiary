@@ -87,11 +87,12 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     }
 
     @Override
-    public void onItemClick(int position, String dayText) {
-        //Date Selection Text:
-        String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
-        //A Toast is like a fade-in, fade-out text message, like an error message; make the on-item click listener work with your recycler view.
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void onItemClick(int position, LocalDate date) {
+        //Must always run on true.
+        if(date != null) {
+            CalendarUtils.selectedDate = date;
+            setMonthView();
+        }
     }
 
     public void weeklyAction(View view) {

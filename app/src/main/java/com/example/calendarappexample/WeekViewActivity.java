@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+    private ListView eventListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,12 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         setContentView(R.layout.activity_week_view);
         setWeekView();
     }
+
     public void initWidgets(){
         //Find both views by id:
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTextView);
+        eventListView = findViewById(R.id.eventListView);
     }
 
     public String monthYearFromDate(LocalDate date){
@@ -42,10 +47,10 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         ArrayList<LocalDate> days = daysInWeekArray(CalendarUtils.selectedDate);
 
         CalendarAdapter calendarAdapter = new CalendarAdapter(days, this);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(
-                getApplicationContext(), 7);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
+        setEventAdapter();
     }
 
 
@@ -60,14 +65,26 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     @Override
-
-    public void onItemClick(int position, String dayText) {
+    public void onItemClick(int position, LocalDate date) {
         //Must always run on true.
-        String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
-        //A Toast is like a fade-in, fade-out text message, like an error message; make the on-item click listener work with your recycler view.
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        CalendarUtils.selectedDate = date;
+        setWeekView();
     }
+
+    @Override
+    protected void onResume (){
+        super.onResume();
+        setEventAdapter();
+    }
+
+    private void setEventAdapter() {
+        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
+        EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
+        eventListView.setAdapter(eventAdapter);
+    }
+
     public void newEventAction(View view) {
+        startActivity(new Intent(this, EventEditActivity.class));
     }
 
 }
