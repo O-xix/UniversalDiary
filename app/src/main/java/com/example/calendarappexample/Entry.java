@@ -4,26 +4,28 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Event {
-    public static ArrayList<Event> eventsList = new ArrayList<>();
+public class Entry {
+    public static ArrayList<Entry> entriesList = new ArrayList<>();
 
-    public static ArrayList<Event> eventsForDate(LocalDate date) {
-        ArrayList<Event> events = new ArrayList<>();
+    public static ArrayList<Entry> eventsForDate(LocalDate date) {
+        ArrayList<Entry> entries = new ArrayList<>();
 
-        for(Event event : eventsList){
-            if(event.getDate().equals(date))
-                events.add(event);
+        for(Entry entry : entriesList){
+            if(entry.getDate().equals(date))
+                entries.add(entry);
         }
 
-        return events;
+        return entries;
     }
 
     private String name;
+    private String text;
     private LocalDate date;
     private LocalTime time;
 
-    public Event(String name, LocalDate date, LocalTime time) {
+    public Entry(String name, String text, LocalDate date, LocalTime time) {
         this.name = name;
+        this.text = text;
         this.date = date;
         this.time = time;
     }

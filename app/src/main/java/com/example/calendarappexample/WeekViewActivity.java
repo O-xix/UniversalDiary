@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener{
@@ -74,13 +73,13 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     private void setEventAdapter() {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
-        EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
+        ArrayList<Entry> dailyEntries = Entry.eventsForDate(CalendarUtils.selectedDate);
+        EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEntries);
         eventListView.setAdapter(eventAdapter);
     }
 
     public void newEventAction(View view) {
-        startActivity(new Intent(this, EventEditActivity.class));
+        startActivity(new Intent(this, EntryEditActivity.class));
     }
 
 }

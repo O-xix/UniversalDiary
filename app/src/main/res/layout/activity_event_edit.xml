@@ -5,64 +5,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EventEditActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Name:"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        />
+    tools:context=".EntryEditActivity">
 
     <EditText
-        android:id="@+id/eventNameET"
+        android:id="@+id/entryNameET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
-        />
+        android:hint="@string/entry_title"
+        android:textAlignment="center"
+        android:textIsSelectable="false"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/eventDateTV"
+        android:id="@+id/entryDateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Date:"
-        android:textSize="20sp"
+        android:text="@string/date"
         android:textAlignment="center"
         android:textColor="@color/black"
-        />
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/eventTimeTV"
+        android:id="@+id/entryTimeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Time:"
-        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:text="@string/time"
         android:textAlignment="center"
         android:textColor="@color/black"
-        />
+        android:textSize="20sp" />
 
-    <Button
+    <EditText
+        android:id="@+id/entryTextET"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="5"
+        android:hint="@string/start_typing"
+        android:textAlignment="textStart" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="@color/blue"
-        android:background="@null"
-        android:textStyle="bold"
-        android:onClick="saveEventAction"
         android:layout_gravity="center"
-        android:textSize="20sp"
-        />
+        >
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:onClick="saveEntryAction"
+            android:text="@string/save"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:layout_marginEnd="20sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:onClick="publishEntryAction"
+            android:text="@string/publish"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
 </LinearLayout>

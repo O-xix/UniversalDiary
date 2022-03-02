@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Shruti</string>
-    <string name="backwardmonth"><![CDATA[<=]]></string>
-    <string name="forwardmonth"><![CDATA[=>]]></string>
+    <string name="backwardmonth"><![CDATA[<=-]]></string>
+    <string name="forwardmonth"><![CDATA[-=>]]></string>
     <string name="feb_2022">Feb 2022</string>
     <string name="sun">SUN</string>
     <string name="mon">MON</string>
@@ -11,4 +11,10 @@
     <string name="fri">FRI</string>
     <string name="sat">SAT</string>
     <string name="new_event">New Event</string>
+    <string name="entry_title">Entry Title</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="save">Save</string>
+    <string name="start_typing">Start Typing…</string>
+    <string name="publish">Publish</string>
 </resources>
