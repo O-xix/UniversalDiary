@@ -1,6 +1,7 @@
 package com.example.calendarappexample;
 
 import static com.example.calendarappexample.CalendarUtils.daysInWeekArray;
+import static com.example.calendarappexample.CalendarUtils.monthYearFromDate;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,6 +27,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
+        initWidgets();
         setWeekView();
     }
 
@@ -35,11 +36,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTextView);
         eventListView = findViewById(R.id.eventListView);
-    }
-
-    public String monthYearFromDate(LocalDate date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yyyy");
-        return date.format(formatter);
     }
 
     private void setWeekView() {

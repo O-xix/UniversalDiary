@@ -39,7 +39,7 @@ public class CalendarUtils {
 
         //Grid, 7x7 objects, cycling through them?
         for(int i = 1; i <= 42; i++) {
-            if (i < dayOfWeek || i > (daysInMonth + dayOfWeek))
+            if (i <= dayOfWeek || i > (daysInMonth + dayOfWeek))
                 daysInMonthArray.add(null);
 
             else
@@ -48,7 +48,7 @@ public class CalendarUtils {
         return daysInMonthArray;
     }
 
-    public static ArrayList<LocalDate> daysInWeekArray(LocalDate localDate){
+    public static ArrayList<LocalDate> daysInWeekArray(LocalDate selectedDate){
         ArrayList<LocalDate> days = new ArrayList<>();
         LocalDate current = sundayForDate(selectedDate);
         LocalDate endDate = current.plusWeeks(1);
