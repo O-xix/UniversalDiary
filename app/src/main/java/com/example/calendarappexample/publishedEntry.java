@@ -26,12 +26,9 @@ public class publishedEntry extends Entry {
     private LocalTime time;
 
     public publishedEntry(String name, String text, String comments, int numComments, LocalDate date, LocalTime time) {
-        this.name = name;
-        this.text = text;
+        super(name, text, date, time);
         this.comments = comments;
         this.numComments = numComments;
-        this.date = date;
-        this.time = time;
     }
 
     public String getName() {

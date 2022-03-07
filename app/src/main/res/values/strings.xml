@@ -20,6 +20,7 @@
     <string name="backDay"><![CDATA[<=-]]></string>
     <string name="forwardDay"><![CDATA[-=>]]></string>
     <string name="Day">Monday</string>
-    <string name="new_event">New Event</string>
     <string name="monthYear">Feb 2021</string>
+    <string name="weekly">Weekly</string>
+    <string name="daily">Daily</string>
 </resources>
