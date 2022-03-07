@@ -25,9 +25,9 @@ public class EventAdapter extends ArrayAdapter<Entry> {
         Entry entry = getItem(position);
 
         if(convertView == null)
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_cell, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.entry_cell, parent, false);
 
-        TextView entryCellTV = convertView.findViewById(R.id.eventCellTV);
+        TextView entryCellTV = convertView.findViewById(R.id.entryCellTV);
 
         String entryTitle = "\"" + entry.getName() + "\" at " + CalendarUtils.formattedTime(entry.getTime());
         entryCellTV.setText(entryTitle);

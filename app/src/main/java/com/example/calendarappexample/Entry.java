@@ -1,5 +1,7 @@
 package com.example.calendarappexample;
 
+import android.media.metrics.Event;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -7,11 +9,26 @@ import java.util.ArrayList;
 public class Entry {
     public static ArrayList<Entry> entriesList = new ArrayList<>();
 
-    public static ArrayList<Entry> eventsForDate(LocalDate date) {
+    public static ArrayList<Entry> entriesForDate(LocalDate date) {
         ArrayList<Entry> entries = new ArrayList<>();
 
         for(Entry entry : entriesList){
             if(entry.getDate().equals(date))
+                entries.add(entry);
+        }
+
+        return entries;
+    }
+
+    public static ArrayList<Entry> entriesForDateAndTime(LocalDate date, LocalTime time)
+    {
+        ArrayList<Entry> entries = new ArrayList<>();
+
+        for(Entry entry : entriesList)
+        {
+            int entryHour = entry.time.getHour();
+            int cellHour = time.getHour();
+            if(entry.getDate().equals(date) && entryHour == cellHour)
                 entries.add(entry);
         }
 
@@ -36,6 +53,14 @@ public class Entry {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public LocalDate getDate() {

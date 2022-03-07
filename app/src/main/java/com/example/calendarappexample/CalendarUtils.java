@@ -20,8 +20,18 @@ public class CalendarUtils {
         return time.format(formatter);
     }
 
+    public static String formattedShortTime(LocalTime time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return time.format(formatter);
+    }
+
     public static String monthYearFromDate(LocalDate date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yyyy");
+        return date.format(formatter);
+    }
+
+    public static String monthDayFromDate(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d");
         return date.format(formatter);
     }
 
@@ -31,6 +41,12 @@ public class CalendarUtils {
         YearMonth yearMonth = YearMonth.from(date);
         int daysInMonth = yearMonth.lengthOfMonth();
 
+        LocalDate prevMonth = selectedDate.minusMonths(1);
+        LocalDate nextMonth = selectedDate.plusMonths(1);
+
+        YearMonth prevYearMonth = YearMonth.from(prevMonth);
+        int prevDaysInMonth = prevYearMonth.lengthOfMonth();
+
         //Getting first day of month.
 
         LocalDate firstOfMonth = CalendarUtils.selectedDate.withDayOfMonth(1);
@@ -39,11 +55,12 @@ public class CalendarUtils {
 
         //Grid, 7x7 objects, cycling through them?
         for(int i = 1; i <= 42; i++) {
-            if (i <= dayOfWeek || i > (daysInMonth + dayOfWeek))
-                daysInMonthArray.add(null);
-
+            if(i <= dayOfWeek)
+                daysInMonthArray.add(LocalDate.of(prevMonth.getYear(),prevMonth.getMonth(),prevDaysInMonth + i - dayOfWeek));
+            else if(i > daysInMonth + dayOfWeek)
+                daysInMonthArray.add(LocalDate.of(nextMonth.getYear(),nextMonth.getMonth(),i - dayOfWeek - daysInMonth));
             else
-                daysInMonthArray.add(LocalDate.of(selectedDate.getYear(), selectedDate.getMonth(), i - dayOfWeek));
+                daysInMonthArray.add(LocalDate.of(selectedDate.getYear(),selectedDate.getMonth(),i - dayOfWeek));
         }
         return daysInMonthArray;
     }

@@ -17,4 +17,9 @@
     <string name="save">Save</string>
     <string name="start_typing">Start Typing…</string>
     <string name="publish">Publish</string>
+    <string name="backDay"><![CDATA[<=-]]></string>
+    <string name="forwardDay"><![CDATA[-=>]]></string>
+    <string name="Day">Monday</string>
+    <string name="new_event">New Event</string>
+    <string name="monthYear">Feb 2021</string>
 </resources>

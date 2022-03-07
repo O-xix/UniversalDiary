@@ -20,7 +20,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    private ListView eventListView;
+    private ListView entryListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         //Find both views by id:
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTextView);
-        eventListView = findViewById(R.id.eventListView);
+        entryListView = findViewById(R.id.entryListView);
     }
 
     private void setWeekView() {
@@ -45,9 +45,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        setEventAdapter();
+        setEntryAdapter();
     }
-
 
     public void previousWeekAction(View view) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1);
@@ -69,17 +68,16 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     @Override
     protected void onResume (){
         super.onResume();
-        setEventAdapter();
+        setEntryAdapter();
     }
 
-    private void setEventAdapter() {
-        ArrayList<Entry> dailyEntries = Entry.eventsForDate(CalendarUtils.selectedDate);
-        EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEntries);
-        eventListView.setAdapter(eventAdapter);
+    private void setEntryAdapter() {
+        ArrayList<Entry> dailyEntries = Entry.entriesForDate(CalendarUtils.selectedDate);
+        EventAdapter entryAdapter = new EventAdapter(getApplicationContext(), dailyEntries);
+        entryListView.setAdapter(entryAdapter);
     }
 
-    public void newEventAction(View view) {
+    public void newEntryAction(View view) {
         startActivity(new Intent(this, EntryEditActivity.class));
     }
-
 }
