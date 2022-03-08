@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         if(date != null) {
             CalendarUtils.selectedDate = date;
             setMonthView();
+            weeklyAction(calendarRecyclerView );
         }
     }
 
