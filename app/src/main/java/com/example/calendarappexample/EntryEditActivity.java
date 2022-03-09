@@ -9,10 +9,8 @@ import android.widget.TextView;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
 
 public class EntryEditActivity extends AppCompatActivity {
 
@@ -56,9 +54,9 @@ public class EntryEditActivity extends AppCompatActivity {
         entryPublishText = censorEntry(entryText);
 
         Entry newEntry = new Entry(entryName, entryText, CalendarUtils.selectedDate, time);
-        publishedEntry publicEntry = new publishedEntry(entryName, entryPublishText, entryComments, 0,  CalendarUtils.selectedDate, time);
+        PublishedEntry publicEntry = new PublishedEntry(entryName, entryPublishText, entryComments, 0,  CalendarUtils.selectedDate, time);
         Entry.entriesList.add(newEntry);
-        publishedEntry.publicEntriesList.add(publicEntry);
+        PublishedEntry.publicEntriesList.add(publicEntry);
         finish();
     }
 
@@ -102,7 +100,8 @@ public class EntryEditActivity extends AppCompatActivity {
                         generatedMaleNames.remove(generatednum);
                         generatedMaleNamesInUse.add(malenum, generatedMaleNam);
                         censoredText[i] = "";
-                    } else if (contentword.equals("<femaleName>" )) {
+                    }
+                    else if (contentword.equals("<femaleName>" )) {
                         OGfemaleNames.add(name);
                         int femalenum = OGfemaleNames.indexOf(name);
                         generatednum = randint.nextInt(65);
@@ -110,7 +109,8 @@ public class EntryEditActivity extends AppCompatActivity {
                         generatedFemaleNames.remove(generatednum);
                         generatedFemaleNamesInUse.add(femalenum, generatedFemaleNam);
                         censoredText[i] = "";
-                    } else if (contentword.equals("<nonbinaryName>" )) {
+                    }
+                    else if (contentword.equals("<nonbinaryName>" )) {
                         OGnonbinaryNames.add(name);
                         int nonbinarynum = OGnonbinaryNames.indexOf(name);
                         generatednum = randint.nextInt(91);
@@ -128,10 +128,12 @@ public class EntryEditActivity extends AppCompatActivity {
             if (OGmaleNames.contains(strArray[j])) {
                 nameIndex = OGmaleNames.indexOf(strArray[j]);
                 censoredText[j] = generatedMaleNamesInUse.get(nameIndex);
-            } else if (OGfemaleNames.contains(strArray[j])) {
+            }
+            else if (OGfemaleNames.contains(strArray[j])) {
                 nameIndex = OGfemaleNames.indexOf(strArray[j]);
                 censoredText[j] = generatedFemaleNamesInUse.get(nameIndex);
-            } else if (OGnonbinaryNames.contains(strArray[j])) {
+            }
+            else if (OGnonbinaryNames.contains(strArray[j])) {
                 nameIndex = OGnonbinaryNames.indexOf(strArray[j]);
                 censoredText[j] = generatedNonbinaryNamesInUse.get(nameIndex);
             }
@@ -141,7 +143,8 @@ public class EntryEditActivity extends AppCompatActivity {
         for (int k = 0; k < censoredText.length; k++) {
             if (k == 0) {
                 censoredEntry = censoredText[k];
-            } else {
+            }
+            else {
                 censoredEntry = censoredEntry + " " + censoredText[k];
             }
         }

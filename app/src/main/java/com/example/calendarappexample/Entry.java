@@ -20,12 +20,10 @@ public class Entry {
         return entries;
     }
 
-    public static ArrayList<Entry> entriesForDateAndTime(LocalDate date, LocalTime time)
-    {
+    public static ArrayList<Entry> entriesForDateAndTime(LocalDate date, LocalTime time) {
         ArrayList<Entry> entries = new ArrayList<>();
 
-        for(Entry entry : entriesList)
-        {
+        for(Entry entry : entriesList) {
             int entryHour = entry.time.getHour();
             int cellHour = time.getHour();
             if(entry.getDate().equals(date) && entryHour == cellHour)
