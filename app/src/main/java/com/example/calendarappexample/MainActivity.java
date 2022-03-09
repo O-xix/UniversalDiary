@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -69,11 +68,11 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         if(date != null) {
             CalendarUtils.selectedDate = date;
             setMonthView();
-            weeklyAction(calendarRecyclerView);
+            dailyAction(calendarRecyclerView);
         }
     }
 
-    public void weeklyAction(View view) {
+    public void exploreAction(View view) {
         startActivity(new Intent(this, WeekViewActivity.class));
     }
 

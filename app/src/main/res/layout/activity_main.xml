@@ -20,7 +20,7 @@
             android:background="@null"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:onClick="weeklyAction"
+            android:onClick="dailyAction"
             />
 
         <Button
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:background="@null"
-            android:onClick="dailyAction"
+            android:onClick="exploreAction"
             android:text="@string/daily"
             android:textColor="@color/blue"
             android:textSize="20sp"
