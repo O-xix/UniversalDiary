@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class DailyViewActivity extends AppCompatActivity {
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     private ListView hourListView;
+    private TextView entryOne;
+    private TextView entryTwo;
+    private TextView entryMore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,9 @@ public class DailyViewActivity extends AppCompatActivity {
         monthDayText = findViewById(R.id.monthDayText);
         dayOfWeekTV = findViewById(R.id.dayOfWeekTV);
         hourListView = findViewById(R.id.hourListView);
+        entryOne = findViewById(R.id.entry1);
+        entryTwo = findViewById(R.id.entry2);
+        entryMore = findViewById(R.id.entryMore);
     }
 
     @Override
@@ -76,6 +83,40 @@ public class DailyViewActivity extends AppCompatActivity {
     }
 
     public void newEventAction(View view) {
-        startActivity(new Intent(this, EntryEditActivity.class));
+        startActivity(new Intent(this, EntryCreateActivity.class));
+    }
+
+    public static String editEntryTitle;
+    public static String editEntryText;
+    public static LocalTime editEntryTime;
+    public static LocalDate editEntryDate;
+    public static int editEntryInArray;
+    public void editEntryOneAction(View view) {
+        ArrayList<HourEntry> list = hourEventList();
+        ArrayList<Entry> entries = new ArrayList<Entry>();
+        for(int i = 0; i < list.size(); i++) {
+            HourEntry parseHourEntry = list.get(i);
+            entries = parseHourEntry.entries;
+            String entryOneTitle = (String) entryOne.getText();
+            for(int j = 0; j < entries.size(); j++) {
+                Entry parseEntry = entries.get(j);
+                editEntryTitle = parseEntry.getName();
+                editEntryText = parseEntry.getText();
+                editEntryTime = parseEntry.getTime();
+                editEntryDate = parseEntry.getDate();
+
+                //want to implement LocalTime
+                if (entryOneTitle == editEntryTitle) {
+                    startActivity(new Intent(this, WeekViewActivity.class));
+                }
+            }
+        }
+    }
+
+    public void editEntryTwoAction(View view) {
+
+    }
+
+    public void viewMoreEntryAction(View view) {
     }
 }

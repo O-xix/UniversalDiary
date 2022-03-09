@@ -41,7 +41,7 @@ public class HourAdapter extends ArrayAdapter<HourEntry> {
     private void setEntries(View convertView, ArrayList<Entry> entries) {
         TextView entry1 = convertView.findViewById(R.id.entry1);
         TextView entry2 = convertView.findViewById(R.id.entry2);
-        TextView entry3 = convertView.findViewById(R.id.entry3);
+        TextView entry3 = convertView.findViewById(R.id.entryMore);
 
         if(entries.size() == 0) {
             hideEntry(entry1);

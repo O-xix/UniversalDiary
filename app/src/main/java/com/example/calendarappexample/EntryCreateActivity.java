@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class EntryEditActivity extends AppCompatActivity {
+public class EntryCreateActivity extends AppCompatActivity {
 
     private EditText entryNameET, entryTextET;
     private TextView entryDateTV, entryTimeTV;
@@ -23,7 +23,7 @@ public class EntryEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_edit);
+        setContentView(R.layout.activity_entry_create);
         initWidgets();
         time = LocalTime.now();
         entryDateTV.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));

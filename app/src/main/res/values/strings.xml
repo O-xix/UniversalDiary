@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shruti</string>
+    <string name="app_name">Public Diary</string>
     <string name="backwardmonth"><![CDATA[<=-]]></string>
     <string name="forwardmonth"><![CDATA[-=>]]></string>
     <string name="feb_2022">Feb 2022</string>
@@ -10,7 +10,7 @@
     <string name="thr">THR</string>
     <string name="fri">FRI</string>
     <string name="sat">SAT</string>
-    <string name="new_event">New Event</string>
+    <string name="new_event">+</string>
     <string name="entry_title">Entry Title</string>
     <string name="date">Date:</string>
     <string name="time">Time:</string>
@@ -21,6 +21,5 @@
     <string name="forwardDay"><![CDATA[-=>]]></string>
     <string name="Day">Monday</string>
     <string name="monthYear">Feb 2021</string>
-    <string name="weekly">Weekly</string>
-    <string name="daily">Daily</string>
+    <string name="explore">Explore</string>
 </resources>

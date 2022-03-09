@@ -13,7 +13,7 @@
             android:name=".DailyViewActivity"
             android:exported="false" />
         <activity
-            android:name=".EntryEditActivity"
+            android:name=".EntryCreateActivity"
             android:exported="false" />
         <activity
             android:name=".WeekViewActivity"

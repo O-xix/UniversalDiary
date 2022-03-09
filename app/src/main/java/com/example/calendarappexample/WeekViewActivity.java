@@ -78,6 +78,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     public void newEntryAction(View view) {
-        startActivity(new Intent(this, EntryEditActivity.class));
+        startActivity(new Intent(this, EntryCreateActivity.class));
     }
 }
