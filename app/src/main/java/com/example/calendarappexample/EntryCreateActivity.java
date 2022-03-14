@@ -54,7 +54,7 @@ public class EntryCreateActivity extends AppCompatActivity {
         entryPublishText = censorEntry(entryText);
 
         Entry newEntry = new Entry(entryName, entryText, CalendarUtils.selectedDate, time);
-        PublishedEntry publicEntry = new PublishedEntry(entryName, entryPublishText, entryComments, 0,  CalendarUtils.selectedDate, time);
+        PublishedEntry publicEntry = new PublishedEntry(entryName + " (pub)", entryPublishText, entryComments, 0,  CalendarUtils.selectedDate, time);
         Entry.entriesList.add(newEntry);
         PublishedEntry.publicEntriesList.add(publicEntry);
         finish();

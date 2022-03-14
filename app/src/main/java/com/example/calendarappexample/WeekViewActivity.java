@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    private ListView entryListView;
+    private ListView publicEntryListView;
     public static String pubname;
     public static String pubtext;
     public static String pubdate;
@@ -36,9 +35,9 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         setContentView(R.layout.activity_week_view);
         initWidgets();
         setWeekView();
-        setEntryAdapter();
+        setPublicEntryAdapter();
         Context weekViewActivityContext = this;
-        entryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        publicEntryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Entry selectedItem = (Entry) parent.getItemAtPosition(position);
@@ -55,7 +54,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         //Find both views by id:
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTextView);
-        entryListView = findViewById(R.id.entryListView);
+        publicEntryListView = findViewById(R.id.publicEntryListView);
     }
 
     private void setWeekView() {
@@ -66,7 +65,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        setEntryAdapter();
+        setPublicEntryAdapter();
     }
 
     public void previousWeekAction(View view) {
@@ -89,16 +88,12 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     @Override
     protected void onResume (){
         super.onResume();
-        setEntryAdapter();
+        setPublicEntryAdapter();
     }
 
-    private void setEntryAdapter() {
-        ArrayList<Entry> dailyEntries = Entry.entriesForDate(CalendarUtils.selectedDate);
-        EntryAdapter entryAdapter = new EntryAdapter(getApplicationContext(), dailyEntries);
-        entryListView.setAdapter(entryAdapter);
-    }
-
-    public void newEntryAction(View view) {
-        startActivity(new Intent(this, EntryCreateActivity.class));
+    private void setPublicEntryAdapter() {
+        ArrayList<PublishedEntry> publishedDailyEntries = PublishedEntry.publicEntriesForDate(CalendarUtils.selectedDate);
+        PublicEntryAdapter publicEntryAdapter = new PublicEntryAdapter(getApplicationContext(), publishedDailyEntries);
+        publicEntryListView.setAdapter(publicEntryAdapter);
     }
 }

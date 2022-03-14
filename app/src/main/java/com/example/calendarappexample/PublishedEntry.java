@@ -7,11 +7,11 @@ import java.util.ArrayList;
 public class PublishedEntry extends Entry {
     public static ArrayList<PublishedEntry> publicEntriesList = new ArrayList<>();
 
-    public static ArrayList<PublishedEntry> publicEntryForDate(LocalDate date) {
+    public static ArrayList<PublishedEntry> publicEntriesForDate(LocalDate selectedDate) {
         ArrayList<PublishedEntry> publicEntries = new ArrayList<>();
 
         for(PublishedEntry publicEntry : publicEntriesList){
-            if(publicEntry.getDate().equals(date))
+            if(publicEntry.getDate().equals(selectedDate))
                 publicEntries.add(publicEntry);
         }
 
@@ -25,6 +25,17 @@ public class PublishedEntry extends Entry {
         super(name, text, date, time);
         this.comments = comments;
         this.numComments = numComments;
+    }
+
+    public static ArrayList<PublishedEntry> PublicEntriesForDate(LocalDate date) {
+        ArrayList<PublishedEntry> publicEntries = new ArrayList<>();
+
+        for(PublishedEntry publishedEntry : publicEntriesList){
+            if(publishedEntry.getDate().equals(date))
+                publicEntries.add(publishedEntry);
+        }
+
+        return publicEntries;
     }
 
     public String getComments() {
