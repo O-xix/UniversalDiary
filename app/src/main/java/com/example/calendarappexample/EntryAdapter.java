@@ -12,9 +12,9 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class EventAdapter extends ArrayAdapter<Entry> {
+public class EntryAdapter extends ArrayAdapter<Entry> {
 
-    public EventAdapter(@NonNull Context context, List<Entry> entries) {
+    public EntryAdapter(@NonNull Context context, List<Entry> entries) {
         super(context, 0, entries);
     }
 

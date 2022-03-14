@@ -7,11 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +24,11 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private ListView entryListView;
+    public static String pubname;
+    public static String pubtext;
+    public static String pubdate;
+    public static String pubtime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,19 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         setContentView(R.layout.activity_week_view);
         initWidgets();
         setWeekView();
+        setEntryAdapter();
+        Context weekViewActivityContext = this;
+        entryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Entry selectedItem = (Entry) parent.getItemAtPosition(position);
+                pubname = selectedItem.getName();
+                pubtext = selectedItem.getText();
+                pubdate = CalendarUtils.formattedDate(selectedItem.getDate());
+                pubtime = CalendarUtils.formattedTime(selectedItem.getTime());
+                startActivity(new Intent(weekViewActivityContext, PublicEntryComment.class));
+            }
+        });
     }
 
     public void initWidgets(){
@@ -73,7 +94,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
 
     private void setEntryAdapter() {
         ArrayList<Entry> dailyEntries = Entry.entriesForDate(CalendarUtils.selectedDate);
-        EventAdapter entryAdapter = new EventAdapter(getApplicationContext(), dailyEntries);
+        EntryAdapter entryAdapter = new EntryAdapter(getApplicationContext(), dailyEntries);
         entryListView.setAdapter(entryAdapter);
     }
 
