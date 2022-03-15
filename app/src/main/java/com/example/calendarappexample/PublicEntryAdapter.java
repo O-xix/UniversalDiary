@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class PublicEntryAdapter extends ArrayAdapter<PublishedEntry> {
-    public PublicEntryAdapter(@NonNull Context context, List<PublishedEntry> publicEntries) {
+public class PublicEntryAdapter extends ArrayAdapter<Entry> {
+    public PublicEntryAdapter(@NonNull Context context, List<Entry> publicEntries) {
         super(context, 0, publicEntries);
     }
 

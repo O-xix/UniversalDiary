@@ -40,7 +40,7 @@ public class EntryCreateActivity extends AppCompatActivity {
     public void saveEntryAction(View view) {
         String entryName = entryNameET.getText().toString();
         String entryText = entryTextET.getText().toString();
-        Entry newEntry = new Entry(entryName, entryText, CalendarUtils.selectedDate, time);
+        Entry newEntry = new Entry(entryName, entryText, "", 0, CalendarUtils.selectedDate, time);
         Entry.entriesList.add(newEntry);
         finish();
     }
@@ -53,10 +53,9 @@ public class EntryCreateActivity extends AppCompatActivity {
         //convert into publishable entry
         entryPublishText = censorEntry(entryText);
 
-        Entry newEntry = new Entry(entryName, entryText, CalendarUtils.selectedDate, time);
-        PublishedEntry publicEntry = new PublishedEntry(entryName + " (pub)", entryPublishText, entryComments, 0,  CalendarUtils.selectedDate, time);
+        Entry newEntry = new Entry(entryName, entryText, "", 0, CalendarUtils.selectedDate, time);
         Entry.entriesList.add(newEntry);
-        PublishedEntry.publicEntriesList.add(publicEntry);
+        Entry.publicEntriesList.add(newEntry);
         finish();
     }
 

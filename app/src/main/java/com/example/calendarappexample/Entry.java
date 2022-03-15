@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Entry {
     public static ArrayList<Entry> entriesList = new ArrayList<>();
+    public static ArrayList<Entry> publicEntriesList = new ArrayList<>();
 
     public static ArrayList<Entry> entriesForDate(LocalDate date) {
         ArrayList<Entry> entries = new ArrayList<>();
@@ -33,16 +34,31 @@ public class Entry {
         return entries;
     }
 
+    public static ArrayList<Entry> publicEntriesForDate(LocalDate selectedDate) {
+        ArrayList<Entry> publicEntries = new ArrayList<>();
+
+        for(Entry publicEntry : publicEntriesList){
+            if(publicEntry.getDate().equals(selectedDate))
+                publicEntries.add(publicEntry);
+        }
+
+        return publicEntries;
+    }
+
     private String name;
     private String text;
     private LocalDate date;
     private LocalTime time;
+    private String comments;
+    private int numComments;
 
-    public Entry(String name, String text, LocalDate date, LocalTime time) {
+    public Entry(String name, String text, String comments, int numComments, LocalDate date, LocalTime time) {
         this.name = name;
         this.text = text;
         this.date = date;
         this.time = time;
+        this.comments = comments;
+        this.numComments = numComments;
     }
 
     public String getName() {
@@ -75,5 +91,21 @@ public class Entry {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public int getNumComments() {
+        return numComments;
+    }
+
+    public void setNumComments(int numComments) {
+        this.numComments = numComments;
     }
 }

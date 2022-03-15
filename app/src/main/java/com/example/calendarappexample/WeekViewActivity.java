@@ -86,13 +86,13 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     @Override
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
         setPublicEntryAdapter();
     }
 
     private void setPublicEntryAdapter() {
-        ArrayList<PublishedEntry> publishedDailyEntries = PublishedEntry.publicEntriesForDate(CalendarUtils.selectedDate);
+        ArrayList<Entry> publishedDailyEntries = Entry.publicEntriesForDate(CalendarUtils.selectedDate);
         PublicEntryAdapter publicEntryAdapter = new PublicEntryAdapter(getApplicationContext(), publishedDailyEntries);
         publicEntryListView.setAdapter(publicEntryAdapter);
     }
