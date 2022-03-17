@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,6 +31,13 @@ public class DailyViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_view);
         initWidgets();
+        publicEntryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedEntry = (Entry) parent.getItemAtPosition(position);
+                startActivity(new Intent(weekViewActivityContext, PublicEntryComment.class));
+            }
+        });
     }
 
     private void initWidgets() {

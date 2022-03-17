@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dasatej23/StudioProjects/PublicDiaryApp/app/src/main/res/layout/activity_public_entry_comment.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/dasatej23/StudioProjects/PublicDiaryApp/app/src/main/res/layout/activity_public_view.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/dasatej23/StudioProjects/PublicDiaryApp/app/src/main/res/layout/activity_week_view.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/dasatej23/StudioProjects/PublicDiaryApp/app/src/main/res/layout/calendar_cell.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/dasatej23/StudioProjects/PublicDiaryApp/app/src/main/res/layout/entry_cell.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/dasatej23/StudioProjects/PublicDiaryApp/app/src/main/res/layout/hour_cell.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/tejas/AndroidStudioProjects/CalendarAppExample/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1935" />
         <entry key="..\:/Users/tejas/AndroidStudioProjects/CalendarAppExample/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1935" />
         <entry key="..\:/Users/tejas/AndroidStudioProjects/CalendarAppExample/app/src/main/res/layout/activity_main.xml" value="0.1" />

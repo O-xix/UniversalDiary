@@ -27,6 +27,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     public static String pubtext;
     public static String pubdate;
     public static String pubtime;
+    public static Entry selectedEntry;
 
 
     @Override
@@ -40,11 +41,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         publicEntryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Entry selectedItem = (Entry) parent.getItemAtPosition(position);
-                pubname = selectedItem.getName();
-                pubtext = selectedItem.getText();
-                pubdate = CalendarUtils.formattedDate(selectedItem.getDate());
-                pubtime = CalendarUtils.formattedTime(selectedItem.getTime());
+                selectedEntry = (Entry) parent.getItemAtPosition(position);
                 startActivity(new Intent(weekViewActivityContext, PublicEntryComment.class));
             }
         });

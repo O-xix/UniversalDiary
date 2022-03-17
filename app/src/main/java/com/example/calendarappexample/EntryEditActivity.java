@@ -48,14 +48,13 @@ public class EntryEditActivity extends AppCompatActivity {
     public void publishEntryAction(View view) {
         String entryName = entryNameET.getText().toString();
         String entryText = entryTextET.getText().toString();
-        String entryPublishText;
-        String entryComments = "";
         //convert into publishable entry
-        entryPublishText = censorEntry(entryText);
+        String entryPublishText = censorEntry(entryText);
 
         Entry newEntry = new Entry(entryName, entryText, "", 0, CalendarUtils.selectedDate, time);
+        Entry publishedNewEntry = new Entry(entryName, entryPublishText, "", 0, CalendarUtils.selectedDate, time);
         Entry.entriesList.add(newEntry);
-        Entry.publicEntriesList.add(newEntry);
+        Entry.publicEntriesList.add(publishedNewEntry);
         finish();
     }
 

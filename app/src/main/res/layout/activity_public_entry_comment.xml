@@ -74,7 +74,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:background="@null"
-        android:onClick="saveEntryAction"
+        android:onClick="saveCommentAction"
         android:text="@string/save"
         android:textColor="@color/blue"
         android:textSize="20sp"
