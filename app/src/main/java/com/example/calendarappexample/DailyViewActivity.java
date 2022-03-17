@@ -4,6 +4,7 @@ import static com.example.calendarappexample.CalendarUtils.selectedDate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,17 +26,19 @@ public class DailyViewActivity extends AppCompatActivity {
     private TextView entryOne;
     private TextView entryTwo;
     private TextView entryMore;
+    public Entry selectedViewEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_view);
         initWidgets();
-        publicEntryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Context dailyViewActivityContext = this;
+        hourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedEntry = (Entry) parent.getItemAtPosition(position);
-                startActivity(new Intent(weekViewActivityContext, PublicEntryComment.class));
+                selectedViewEntry = (Entry) parent.getItemAtPosition(position);
+                startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
             }
         });
     }

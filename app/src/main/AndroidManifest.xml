@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalendarAppExample">
         <activity
+            android:name=".EntryViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".PublicEntryComment"
             android:exported="false" />
         <activity
