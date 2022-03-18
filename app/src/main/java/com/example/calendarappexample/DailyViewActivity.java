@@ -26,7 +26,7 @@ public class DailyViewActivity extends AppCompatActivity {
     private TextView entryOne;
     private TextView entryTwo;
     private TextView entryMore;
-    public Entry selectedViewEntry;
+    public static Entry selectedViewEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class DailyViewActivity extends AppCompatActivity {
     public void newEventAction(View view) {
         startActivity(new Intent(this, EntryCreateActivity.class));
     }
-
+    /*
     public static String editEntryTitle;
     public static String editEntryText;
     public static LocalTime editEntryTime;
@@ -130,4 +130,5 @@ public class DailyViewActivity extends AppCompatActivity {
 
     public void viewMoreEntryAction(View view) {
     }
+     */
 }

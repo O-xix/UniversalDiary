@@ -10,6 +10,7 @@ class HourEntry {
     public HourEntry(LocalTime time, ArrayList<Entry> entries) {
         this.time = time;
         this.entries = entries;
+
     }
 
     public LocalTime getTime()

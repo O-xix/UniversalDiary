@@ -1,5 +1,7 @@
 package com.example.calendarappexample;
 
+import static com.example.calendarappexample.DailyViewActivity.selectedViewEntry;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -14,7 +16,11 @@ public class EntryViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_view);
         initWidgets();
-
+        entryNameTV.setText(selectedViewEntry.getName());
+        entryDateTV.setText(CalendarUtils.formattedDate(selectedViewEntry.getDate()));
+        entryTimeTV.setText(CalendarUtils.formattedTime(selectedViewEntry.getTime()));
+        entryTextTV.setText(selectedViewEntry.getText());
+        entryCommentTV.setText(selectedViewEntry.getComments());
     }
 
     private void initWidgets() {

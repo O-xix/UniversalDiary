@@ -28,7 +28,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:id="@+id/entry1"
-            android:onClick="editEntryOneAction"
             android:textSize="12sp"
             android:lines="2"
             android:textColor="@color/white"
@@ -42,7 +41,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:id="@+id/entry2"
-            android:onClick="editEntryTwoAction"
             android:textSize="12sp"
             android:lines="2"
             android:textColor="@color/white"
@@ -65,3 +63,5 @@
     </LinearLayout>
 
 </LinearLayout>
+
+    <!-- android:onClick="editEntryOneAction", android:onClick="editEntryTwoAction"  -->
