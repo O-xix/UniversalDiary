@@ -1,6 +1,6 @@
 package com.example.calendarappexample;
 
-import static com.example.calendarappexample.DailyViewActivity.selectedViewEntry;
+import static com.example.calendarappexample.HourEntryListActivity.selectedViewEntry;
 
 import androidx.appcompat.app.AppCompatActivity;
 

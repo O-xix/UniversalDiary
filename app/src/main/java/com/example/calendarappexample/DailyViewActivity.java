@@ -24,13 +24,7 @@ public class DailyViewActivity extends AppCompatActivity {
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     private ListView hourListView;
-    private TextView entryOne;
-    private TextView entryTwo;
-    private TextView entryMore;
-    private boolean entryActiveOne = false;
-    private boolean entryActiveTwo = false;
-    private boolean entryActiveMore = false;
-    public static Entry selectedViewEntry;
+    public static HourEntry selectedViewHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,24 +35,8 @@ public class DailyViewActivity extends AppCompatActivity {
         hourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                HourEntry selectedViewHour = (HourEntry) parent.getItemAtPosition(position);
-                if(entryActiveOne) {
-                    selectedViewEntry = selectedViewHour.getEntries().get(0);
-                    entryActiveOne = false;
-                    startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
-                }
-                else if(entryActiveTwo) {
-                    selectedViewEntry = selectedViewHour.getEntries().get(1);
-                    entryActiveTwo = false;
-                    startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
-                }
-                else if(entryActiveMore) {
-                    //startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
-                }
-                else {
-                    Toast.makeText(dailyViewActivityContext, "Please select an entry.", Toast.LENGTH_SHORT).show();
-                }
-                
+                selectedViewHour = (HourEntry) parent.getItemAtPosition(position);
+                startActivity(new Intent(dailyViewActivityContext, HourEntryListActivity.class));
             }
         });
     }
@@ -67,9 +45,6 @@ public class DailyViewActivity extends AppCompatActivity {
         monthDayText = findViewById(R.id.monthDayText);
         dayOfWeekTV = findViewById(R.id.dayOfWeekTV);
         hourListView = findViewById(R.id.hourListView);
-        entryOne = findViewById(R.id.entry1);
-        entryTwo = findViewById(R.id.entry2);
-        entryMore = findViewById(R.id.entryMore);
     }
 
     @Override
@@ -115,17 +90,5 @@ public class DailyViewActivity extends AppCompatActivity {
 
     public void newEventAction(View view) {
         startActivity(new Intent(this, EntryCreateActivity.class));
-    }
-
-
-    public void viewMoreEntryAction(View view) {
-    }
-
-    public void grabEntryTwoAction(View view) {
-        entryActiveTwo = true;
-    }
-
-    public void grabEntryOneAction(View view) {
-        entryActiveOne = true;
     }
 }

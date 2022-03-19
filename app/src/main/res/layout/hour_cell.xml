@@ -33,7 +33,7 @@
             android:lines="2"
             android:textColor="@color/white"
             android:text="Entry 1"
-            android:onClick="grabEntryOneAction"/>
+            />
 
         <TextView
             android:layout_width="0dp"
@@ -47,7 +47,7 @@
             android:lines="2"
             android:textColor="@color/white"
             android:text="Event 2"
-            android:onClick="grabEntryTwoAction"/>
+            />
 
         <TextView
             android:layout_width="0dp"
@@ -57,7 +57,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:id="@+id/entryMore"
-            android:onClick="viewMoreEntryAction"
             android:textSize="12sp"
             android:lines="2"
             android:textColor="@color/white"
