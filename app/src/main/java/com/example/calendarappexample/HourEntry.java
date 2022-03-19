@@ -23,12 +23,12 @@ class HourEntry {
         this.time = time;
     }
 
-    public ArrayList<Entry> getEvents()
+    public ArrayList<Entry> getEntries()
     {
         return entries;
     }
 
-    public void setEvents(ArrayList<Entry> events)
+    public void setEntries(ArrayList<Entry> entries)
     {
         this.entries = entries;
     }

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,6 +27,9 @@ public class DailyViewActivity extends AppCompatActivity {
     private TextView entryOne;
     private TextView entryTwo;
     private TextView entryMore;
+    private boolean entryActiveOne = false;
+    private boolean entryActiveTwo = false;
+    private boolean entryActiveMore = false;
     public static Entry selectedViewEntry;
 
     @Override
@@ -37,8 +41,24 @@ public class DailyViewActivity extends AppCompatActivity {
         hourListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedViewEntry = (Entry) parent.getItemAtPosition(position);
-                startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
+                HourEntry selectedViewHour = (HourEntry) parent.getItemAtPosition(position);
+                if(entryActiveOne) {
+                    selectedViewEntry = selectedViewHour.getEntries().get(0);
+                    entryActiveOne = false;
+                    startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
+                }
+                else if(entryActiveTwo) {
+                    selectedViewEntry = selectedViewHour.getEntries().get(1);
+                    entryActiveTwo = false;
+                    startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
+                }
+                else if(entryActiveMore) {
+                    //startActivity(new Intent(dailyViewActivityContext, PublicEntryComment.class));
+                }
+                else {
+                    Toast.makeText(dailyViewActivityContext, "Please select an entry.", Toast.LENGTH_SHORT).show();
+                }
+                
             }
         });
     }
@@ -96,39 +116,16 @@ public class DailyViewActivity extends AppCompatActivity {
     public void newEventAction(View view) {
         startActivity(new Intent(this, EntryCreateActivity.class));
     }
-    /*
-    public static String editEntryTitle;
-    public static String editEntryText;
-    public static LocalTime editEntryTime;
-    public static LocalDate editEntryDate;
-    public static int editEntryInArray;
-    public void editEntryOneAction(View view) {
-        ArrayList<HourEntry> list = hourEventList();
-        ArrayList<Entry> entries = new ArrayList<Entry>();
-        for(int i = 0; i < list.size(); i++) {
-            HourEntry parseHourEntry = list.get(i);
-            entries = parseHourEntry.entries;
-            String entryOneTitle = (String) entryOne.getText();
-            for(int j = 0; j < entries.size(); j++) {
-                Entry parseEntry = entries.get(j);
-                editEntryTitle = parseEntry.getName();
-                editEntryText = parseEntry.getText();
-                editEntryTime = parseEntry.getTime();
-                editEntryDate = parseEntry.getDate();
 
-                //want to implement LocalTime
-                if (entryOneTitle == editEntryTitle) {
-                    startActivity(new Intent(this, WeekViewActivity.class));
-                }
-            }
-        }
-    }
-
-    public void editEntryTwoAction(View view) {
-
-    }
 
     public void viewMoreEntryAction(View view) {
     }
-     */
+
+    public void grabEntryTwoAction(View view) {
+        entryActiveTwo = true;
+    }
+
+    public void grabEntryOneAction(View view) {
+        entryActiveOne = true;
+    }
 }

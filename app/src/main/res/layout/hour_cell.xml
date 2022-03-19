@@ -18,7 +18,8 @@
         android:background="@color/lightPurple"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:id="@+id/hourRow">
 
         <TextView
             android:layout_width="0dp"
@@ -31,7 +32,8 @@
             android:textSize="12sp"
             android:lines="2"
             android:textColor="@color/white"
-            android:text="Entry 1"/>
+            android:text="Entry 1"
+            android:onClick="grabEntryOneAction"/>
 
         <TextView
             android:layout_width="0dp"
@@ -44,7 +46,8 @@
             android:textSize="12sp"
             android:lines="2"
             android:textColor="@color/white"
-            android:text="Event 2"/>
+            android:text="Event 2"
+            android:onClick="grabEntryTwoAction"/>
 
         <TextView
             android:layout_width="0dp"

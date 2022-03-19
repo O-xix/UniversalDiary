@@ -1,5 +1,6 @@
 package com.example.calendarappexample;
 
+import static com.example.calendarappexample.Entry.entriesList;
 import static com.example.calendarappexample.WeekViewActivity.pubdate;
 import static com.example.calendarappexample.WeekViewActivity.pubname;
 import static com.example.calendarappexample.WeekViewActivity.pubtext;
@@ -44,6 +45,12 @@ public class PublicEntryComment extends AppCompatActivity {
     public void saveCommentAction(View view) {
         String entryComment = entryCommentET.getText().toString();
         selectedEntry.setComments(selectedEntry.getComments() + "\n - " + entryComment);
+        for(int i = 0; i < entriesList.size(); i++) {
+            if(entriesList.get(i) == selectedEntry) {
+                entriesList.get(i).setComments(selectedEntry.getComments());
+                entriesList.get(i).setNumComments(selectedEntry.getNumComments());
+            }
+        }
         selectedEntry.setNumComments(selectedEntry.getNumComments() + 1);
         finish();
     }
