@@ -5,6 +5,7 @@ import static com.example.calendarappexample.HourEntryListActivity.selectedViewE
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class EntryViewActivity extends AppCompatActivity {
@@ -21,6 +22,8 @@ public class EntryViewActivity extends AppCompatActivity {
         entryTimeTV.setText(CalendarUtils.formattedTime(selectedViewEntry.getTime()));
         entryTextTV.setText(selectedViewEntry.getText());
         entryCommentTV.setText(selectedViewEntry.getComments());
+        entryTextTV.setMovementMethod(new ScrollingMovementMethod());
+        entryCommentTV.setMovementMethod(new ScrollingMovementMethod());
     }
 
     private void initWidgets() {

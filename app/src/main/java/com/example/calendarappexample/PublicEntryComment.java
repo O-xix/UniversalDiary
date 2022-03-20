@@ -10,6 +10,7 @@ import static com.example.calendarappexample.WeekViewActivity.selectedEntry;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class PublicEntryComment extends AppCompatActivity {
         entryNameTV.setText(pubname);
         entryDateTV.setText(pubdate);
         entryTimeTV.setText(pubtime);
+        entryTextTV.setMovementMethod(new ScrollingMovementMethod());
     }
 
     private void initWidgets() {

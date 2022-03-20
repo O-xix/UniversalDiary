@@ -44,25 +44,28 @@
     <TextView
         android:id="@+id/entryTextTV"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="5"
         android:ems="10"
-        android:textAlignment="textStart" />
+        android:textAlignment="textStart"
+        android:scrollbars = "vertical"
+        />
 
     <EditText
         android:id="@+id/entryCommentET"
         android:layout_width="match_parent"
-        android:layout_height="300sp"
+        android:layout_height="400sp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="5"
         android:ems="10"
+        android:inputType="textMultiLine"
         android:textAlignment="textStart"
         android:hint="Comment..."
         />

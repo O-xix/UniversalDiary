@@ -1,11 +1,8 @@
 package com.example.calendarappexample;
 
-import static com.example.calendarappexample.CalendarUtils.daysInWeekArray;
 import static com.example.calendarappexample.DailyViewActivity.selectedViewHour;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,18 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class HourEntryListActivity extends AppCompatActivity {
-    private TextView HourTV;
+    private TextView hourTV;
     private ListView entriesForHourList;
     public static Entry selectedViewEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_week_view);
+        setContentView(R.layout.activity_hour_entry_list);
         initWidgets();
         setHourView();
         setViewEntryAdapter();
@@ -43,12 +39,12 @@ public class HourEntryListActivity extends AppCompatActivity {
 
     public void initWidgets(){
         //Find both views by id:
-        HourTV = findViewById(R.id.HourTV);
+        hourTV = findViewById(R.id.HourTextTV);
         entriesForHourList = findViewById(R.id.EntriesForHourList);
     }
 
     private void setHourView() {
-        HourTV.setText(CalendarUtils.formattedTime(selectedViewHour.getTime()));
+        hourTV.setText(CalendarUtils.formattedTime(selectedViewHour.getTime()));
         setViewEntryAdapter();
     }
 
@@ -60,7 +56,7 @@ public class HourEntryListActivity extends AppCompatActivity {
 
     private void setViewEntryAdapter() {
         ArrayList<Entry> entriesForHour = selectedViewHour.getEntries();
-        ArrayAdapter entriesAdapter = new ArrayAdapter<>(this, R.layout.activity_week_view, entriesForHour);
-        entriesForHourList.setAdapter(entriesAdapter);
+        PublicEntryAdapter viewEntryAdapter = new PublicEntryAdapter(getApplicationContext(), entriesForHour);
+        entriesForHourList.setAdapter(viewEntryAdapter);
     }
 }
