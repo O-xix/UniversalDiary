@@ -13,7 +13,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, date TEXT primary key, time TEXT primary key)");
+        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, date TEXT, time TEXT, constraint PK_Entry primary key (date, time))");
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("comments", comments);
         contentValues.put("numComments", numComments);
-        Cursor cursor = DB.rawQuery("Select * from Userdetails where title = ?", new String[]{title});
+        Cursor cursor = DB.rawQuery("Select * from EntryList where title = ?", new String[]{title});
         if (cursor.getCount() > 0) {
             long result = DB.update("EntryList", contentValues, "title=?", new String[]{title});
             if (result == -1) {

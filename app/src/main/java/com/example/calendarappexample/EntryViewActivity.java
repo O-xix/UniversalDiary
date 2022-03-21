@@ -10,14 +10,14 @@ import android.widget.TextView;
 
 public class EntryViewActivity extends AppCompatActivity {
 
-    private TextView entryDateTV, entryNameTV, entryTextTV, entryTimeTV, entryCommentTV;
+    private TextView entryDateTV, entryTitleTV, entryTextTV, entryTimeTV, entryCommentTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_view);
         initWidgets();
-        entryNameTV.setText(selectedViewEntry.getTitle());
+        entryTitleTV.setText(selectedViewEntry.getTitle());
         entryDateTV.setText(CalendarUtils.formattedDate(selectedViewEntry.getDate()));
         entryTimeTV.setText(CalendarUtils.formattedTime(selectedViewEntry.getTime()));
         entryTextTV.setText(selectedViewEntry.getText());
@@ -27,7 +27,7 @@ public class EntryViewActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        entryNameTV = findViewById(R.id.entryNameTV);
+        entryTitleTV = findViewById(R.id.entryTitleTV);
         entryDateTV = findViewById(R.id.entryDateTV);
         entryTimeTV = findViewById(R.id.entryTimeTV);
         entryTextTV = findViewById(R.id.entryTextTV);

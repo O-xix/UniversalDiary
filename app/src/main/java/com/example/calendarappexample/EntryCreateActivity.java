@@ -1,6 +1,11 @@
 package com.example.calendarappexample;
 
+import static com.example.calendarappexample.Entry.entriesList;
+import static com.example.calendarappexample.Entry.publicEntriesList;
+import static com.example.calendarappexample.MainActivity.PublishedSQLiteDB;
 import static com.example.calendarappexample.MainActivity.SQLiteDB;
+import static com.example.calendarappexample.MainActivity.grabEntriesFromDB;
+import static com.example.calendarappexample.MainActivity.grabPublishedEntriesFromDB;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,16 +13,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 public class EntryCreateActivity extends AppCompatActivity {
 
-    private EditText entryNameET, entryTextET;
+    private EditText entryTitleET, entryTextET;
     private TextView entryDateTV, entryTimeTV;
 
     private LocalTime time;
@@ -35,33 +40,34 @@ public class EntryCreateActivity extends AppCompatActivity {
 
     private void initWidgets() {
         entryTextET = findViewById(R.id.entryTextET);
-        entryNameET = findViewById(R.id.entryNameET);
+        entryTitleET = findViewById(R.id.entryTitleET);
         entryDateTV = findViewById(R.id.entryDateTV);
         entryTimeTV = findViewById(R.id.entryTimeTV);
     }
 
     public void saveEntryAction(View view) {
-        String entryName = entryNameET.getText().toString();
+        String entryTitle = entryTitleET.getText().toString();
         String entryText = entryTextET.getText().toString();
-        Entry newEntry = new Entry(entryName, entryText, "", 0, CalendarUtils.selectedDate, time);
-        Entry.entriesList.add(newEntry);
+        SQLiteDB.insertentry(entryTitle, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
+        entriesList.clear();
+        grabEntriesFromDB();
+        Toast.makeText(this, entryTitle + " saved succesfully!", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     public void publishEntryAction(View view) {
-        String entryName = entryNameET.getText().toString();
+        String entryTitle = entryTitleET.getText().toString();
         String entryText = entryTextET.getText().toString();
-        String entryPublishText;
         //convert into publishable entry
-        entryPublishText = censorEntry(entryText);
+        String entryPublishText = censorEntry(entryText);
 
-        Entry newEntry = new Entry(entryName, entryText, "", 0, CalendarUtils.selectedDate, time);
-        Entry newPublicEntry = new Entry(entryName, entryPublishText, "", 0, CalendarUtils.selectedDate, time);
-        Entry.entriesList.add(newEntry);
-        Entry.publicEntriesList.add(newPublicEntry);
-
-        SQLiteDB.insertentry(entryName, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
-
+        SQLiteDB.insertentry(entryTitle, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
+        PublishedSQLiteDB.insertentry(entryTitle, entryPublishText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
+        entriesList.clear();
+        grabEntriesFromDB();
+        publicEntriesList.clear();
+        grabPublishedEntriesFromDB();
+        Toast.makeText(this, entryTitle + " saved succesfully!", Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -106,7 +112,7 @@ public class EntryCreateActivity extends AppCompatActivity {
                         generatedMaleNamesInUse.add(malenum, generatedMaleNam);
                         censoredText[i] = "";
                     }
-                    else if (contentword.equals("~femaleName~" )) {
+                    else if (contentword.equals("~femaleName~")) {
                         OGfemaleNames.add(name);
                         int femalenum = OGfemaleNames.indexOf(name);
                         generatednum = randint.nextInt(65);
@@ -115,7 +121,7 @@ public class EntryCreateActivity extends AppCompatActivity {
                         generatedFemaleNamesInUse.add(femalenum, generatedFemaleNam);
                         censoredText[i] = "";
                     }
-                    else if (contentword.equals("~nonbinaryName~" )) {
+                    else if (contentword.equals("~nonbinaryName~")) {
                         OGnonbinaryNames.add(name);
                         int nonbinarynum = OGnonbinaryNames.indexOf(name);
                         generatednum = randint.nextInt(91);
@@ -155,5 +161,8 @@ public class EntryCreateActivity extends AppCompatActivity {
         }
         return censoredEntry;
         //code end
+    }
+
+    public void saveCommentAction(View view) {
     }
 }

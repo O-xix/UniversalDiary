@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.CalendarAppExample" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightorange</item>
+        <item name="colorPrimary">@color/lighterorange</item>
         <item name="colorPrimaryVariant">@color/cream</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

@@ -1,7 +1,13 @@
 package com.example.calendarappexample;
 
+import static com.example.calendarappexample.CalendarUtils.parsedDate;
+import static com.example.calendarappexample.CalendarUtils.parsedTime;
 import static com.example.calendarappexample.Entry.entriesList;
+import static com.example.calendarappexample.Entry.publicEntriesList;
+import static com.example.calendarappexample.MainActivity.PublishedSQLiteDB;
 import static com.example.calendarappexample.MainActivity.SQLiteDB;
+import static com.example.calendarappexample.MainActivity.grabEntriesFromDB;
+import static com.example.calendarappexample.MainActivity.grabPublishedEntriesFromDB;
 import static com.example.calendarappexample.WeekViewActivity.pubdate;
 import static com.example.calendarappexample.WeekViewActivity.pubname;
 import static com.example.calendarappexample.WeekViewActivity.pubtext;
@@ -10,11 +16,13 @@ import static com.example.calendarappexample.WeekViewActivity.selectedEntry;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PublicEntryComment extends AppCompatActivity {
 
@@ -39,7 +47,7 @@ public class PublicEntryComment extends AppCompatActivity {
 
     private void initWidgets() {
         entryTextTV = findViewById(R.id.entryTextTV);
-        entryNameTV = findViewById(R.id.entryNameTV);
+        entryNameTV = findViewById(R.id.entryTitleTV);
         entryDateTV = findViewById(R.id.entryDateTV);
         entryTimeTV = findViewById(R.id.entryTimeTV);
         entryCommentET = findViewById(R.id.entryCommentET);
@@ -47,7 +55,7 @@ public class PublicEntryComment extends AppCompatActivity {
 
     public void saveCommentAction(View view) {
         String entryComment = entryCommentET.getText().toString();
-        selectedEntry.setComments(selectedEntry.getComments() + "\n - " + entryComment);
+        selectedEntry.setComments(selectedEntry.getComments() + "\n\n - " + entryComment);
         for(int i = 0; i < entriesList.size(); i++) {
             if(entriesList.get(i) == selectedEntry) {
                 entriesList.get(i).setComments(selectedEntry.getComments());
@@ -55,7 +63,19 @@ public class PublicEntryComment extends AppCompatActivity {
             }
         }
         selectedEntry.setNumComments(selectedEntry.getNumComments() + 1);
-        SQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
+        Cursor res = PublishedSQLiteDB.getdata();
+        while(res.moveToNext()){
+            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(4)), parsedTime(res.getString(5)));
+            if(selectedEntry.getTitle().equals(entry.getTitle()) && selectedEntry.getTime() == entry.getTime() && selectedEntry.getDate() == entry.getDate()) {
+                SQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
+            }
+        }
+        PublishedSQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
+        entriesList.clear();
+        grabEntriesFromDB();
+        publicEntriesList.clear();
+        grabPublishedEntriesFromDB();
+        Toast.makeText(this, selectedEntry.getTitle() + " commented succesfully!", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

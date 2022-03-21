@@ -8,7 +8,7 @@
     tools:context=".EntryCreateActivity">
 
     <EditText
-        android:id="@+id/entryNameET"
+        android:id="@+id/entryTitleET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
@@ -68,7 +68,7 @@
             android:background="@null"
             android:onClick="saveEntryAction"
             android:text="@string/save"
-            android:textColor="@color/lightestorange"
+            android:textColor="@color/orange"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="left"
@@ -81,7 +81,7 @@
             android:background="@null"
             android:onClick="publishEntryAction"
             android:text="@string/publish"
-            android:textColor="@color/lightestorange"
+            android:textColor="@color/orange"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="right"/>

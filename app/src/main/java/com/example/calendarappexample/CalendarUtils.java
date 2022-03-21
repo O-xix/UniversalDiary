@@ -29,12 +29,12 @@ public class CalendarUtils {
 
     public static LocalDate parsedDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
-        return parse(date, formatter);
+        return LocalDate.parse(date, formatter);
     }
 
     public static LocalTime parsedTime(String time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-        return LocalTime.from(parse(time, formatter));
+        return LocalTime.parse(time, formatter);
     }
 
     public static String monthYearFromDate(LocalDate date){
