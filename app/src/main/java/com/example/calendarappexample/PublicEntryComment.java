@@ -1,6 +1,7 @@
 package com.example.calendarappexample;
 
 import static com.example.calendarappexample.Entry.entriesList;
+import static com.example.calendarappexample.MainActivity.SQLiteDB;
 import static com.example.calendarappexample.WeekViewActivity.pubdate;
 import static com.example.calendarappexample.WeekViewActivity.pubname;
 import static com.example.calendarappexample.WeekViewActivity.pubtext;
@@ -54,6 +55,7 @@ public class PublicEntryComment extends AppCompatActivity {
             }
         }
         selectedEntry.setNumComments(selectedEntry.getNumComments() + 1);
+        SQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
         finish();
     }
 }

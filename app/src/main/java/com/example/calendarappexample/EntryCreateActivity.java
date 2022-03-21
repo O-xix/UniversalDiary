@@ -1,5 +1,7 @@
 package com.example.calendarappexample;
 
+import static com.example.calendarappexample.MainActivity.SQLiteDB;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -56,6 +59,9 @@ public class EntryCreateActivity extends AppCompatActivity {
         Entry newPublicEntry = new Entry(entryName, entryPublishText, "", 0, CalendarUtils.selectedDate, time);
         Entry.entriesList.add(newEntry);
         Entry.publicEntriesList.add(newPublicEntry);
+
+        SQLiteDB.insertentry(entryName, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
+
         finish();
     }
 

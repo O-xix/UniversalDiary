@@ -1,12 +1,16 @@
 package com.example.calendarappexample;
 
 import static com.example.calendarappexample.CalendarUtils.daysInMonthArray;
+import static com.example.calendarappexample.CalendarUtils.parsedDate;
+import static com.example.calendarappexample.CalendarUtils.parsedTime;
+import static com.example.calendarappexample.Entry.entriesList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         super.onCreate(savedInstanceState);
         startActivity(new Intent(this, LoginActivity.class));
         SQLiteDB = new SQLiteDBHelper(this);
+        grabEntriesFromDB();
         setContentView(R.layout.activity_main);
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
@@ -83,5 +88,12 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     public void dailyAction(View view) {
         startActivity(new Intent(this, DailyViewActivity.class));
+    }
+
+    public void grabEntriesFromDB() {
+        Cursor res = SQLiteDB.getdata();
+        while(res.moveToNext()){
+            entriesList.add(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(4)), parsedTime(res.getString(5)));
+        }
     }
 }

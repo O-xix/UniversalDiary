@@ -1,5 +1,7 @@
 package com.example.calendarappexample;
 
+import static java.time.LocalDate.parse;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -23,6 +25,16 @@ public class CalendarUtils {
     public static String formattedShortTime(LocalTime time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return time.format(formatter);
+    }
+
+    public static LocalDate parsedDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+        return parse(date, formatter);
+    }
+
+    public static LocalTime parsedTime(String time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        return LocalTime.from(parse(time, formatter));
     }
 
     public static String monthYearFromDate(LocalDate date){

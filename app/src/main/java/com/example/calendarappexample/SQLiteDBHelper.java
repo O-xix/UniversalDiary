@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class SQLiteDBHelper extends SQLiteOpenHelper {
     public SQLiteDBHelper(Context context) {
         super(context, "EntryList.db", null, 1);
@@ -16,7 +13,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table EntryList(title TEXT primary key, text TEXT, date TEXT, time TEXT, comments TEXT, numComments INTEGER)");
+        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, date TEXT primary key, time TEXT primary key)");
     }
 
     @Override
@@ -24,7 +21,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists EntryList");
     }
 
-    public Boolean insertentry(String title, String text, String date, String time, String comments, int numComments) {
+    public Boolean insertentry(String title, String text, String comments, int numComments, String date, String time) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title", title);
@@ -43,7 +40,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean updateentry(String title, String text, String date, String time, String comments, int numComments) {
+    public Boolean updateentry(String title, String text, String comments, int numComments, String date, String time) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("comments", comments);
@@ -63,9 +60,9 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getdata () {
+    public Cursor getdata() {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from Userdetails", null);
+        Cursor cursor = DB.rawQuery("Select * from EntryList", null);
         return cursor;
     }
 }
