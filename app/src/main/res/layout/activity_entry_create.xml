@@ -68,7 +68,7 @@
             android:background="@null"
             android:onClick="saveEntryAction"
             android:text="@string/save"
-            android:textColor="@color/blue"
+            android:textColor="@color/lightestorange"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="left"
@@ -81,7 +81,7 @@
             android:background="@null"
             android:onClick="publishEntryAction"
             android:text="@string/publish"
-            android:textColor="@color/blue"
+            android:textColor="@color/lightestorange"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="right"/>
