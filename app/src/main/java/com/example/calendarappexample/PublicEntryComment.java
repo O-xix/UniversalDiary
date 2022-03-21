@@ -25,7 +25,7 @@ public class PublicEntryComment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_entry_comment);
         initWidgets();
-        pubname = selectedEntry.getName();
+        pubname = selectedEntry.getTitle();
         pubtext = selectedEntry.getText();
         pubdate = CalendarUtils.formattedDate(selectedEntry.getDate());
         pubtime = CalendarUtils.formattedTime(selectedEntry.getTime());

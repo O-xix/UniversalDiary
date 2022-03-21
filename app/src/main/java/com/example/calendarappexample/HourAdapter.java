@@ -74,7 +74,7 @@ public class HourAdapter extends ArrayAdapter<HourEntry> {
     }
 
     private void setEntry(TextView textView, Entry entry) {
-        textView.setText(entry.getName());
+        textView.setText(entry.getTitle());
         textView.setVisibility(View.VISIBLE);
     }
 

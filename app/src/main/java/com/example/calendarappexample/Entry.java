@@ -1,7 +1,5 @@
 package com.example.calendarappexample;
 
-import android.media.metrics.Event;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -45,15 +43,15 @@ public class Entry {
         return publicEntries;
     }
 
-    private String name;
+    private String title;
     private String text;
     private LocalDate date;
     private LocalTime time;
     private String comments;
     private int numComments;
 
-    public Entry(String name, String text, String comments, int numComments, LocalDate date, LocalTime time) {
-        this.name = name;
+    public Entry(String title, String text, String comments, int numComments, LocalDate date, LocalTime time) {
+        this.title = title;
         this.text = text;
         this.date = date;
         this.time = time;
@@ -61,12 +59,12 @@ public class Entry {
         this.numComments = numComments;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getText() {

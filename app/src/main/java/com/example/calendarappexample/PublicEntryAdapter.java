@@ -27,7 +27,7 @@ public class PublicEntryAdapter extends ArrayAdapter<Entry> {
 
         TextView entryCellTV = convertView.findViewById(R.id.entryCellTV);
 
-        String entryTitle = "\"" + entry.getName() + "\" at " + CalendarUtils.formattedTime(entry.getTime());
+        String entryTitle = "\"" + entry.getTitle() + "\" at " + CalendarUtils.formattedTime(entry.getTime());
         entryCellTV.setText(entryTitle);
         return convertView;
 

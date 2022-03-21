@@ -17,7 +17,7 @@ public class EntryViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_view);
         initWidgets();
-        entryNameTV.setText(selectedViewEntry.getName());
+        entryNameTV.setText(selectedViewEntry.getTitle());
         entryDateTV.setText(CalendarUtils.formattedDate(selectedViewEntry.getDate()));
         entryTimeTV.setText(CalendarUtils.formattedTime(selectedViewEntry.getTime()));
         entryTextTV.setText(selectedViewEntry.getText());

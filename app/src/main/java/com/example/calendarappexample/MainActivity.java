@@ -21,12 +21,14 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+    public static SQLiteDBHelper SQLiteDB;
 
     //Finding Date
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startActivity(new Intent(this, LoginActivity.class));
+        SQLiteDB = new SQLiteDBHelper(this);
         setContentView(R.layout.activity_main);
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
