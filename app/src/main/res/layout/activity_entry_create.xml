@@ -52,7 +52,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="5"
-        android:hint="Start Typing... \n\n To censor on PUBLISH: \n Use \n ~maleName~ for male names, \n ~femaleName~ for female names, \n ~nonbinaryName~ for other names (ex. places, schools, nonbinary people) \n followed by *(name) and everytime you use it, put an asterisk before every usage of the name. \n\n ex. \n 'Hello, ~nonbinaryName~ *Teja Teja *Teja' \n\n Will publish \n 'Hello,  Jaxet Teja Jaxet'"
+        android:hint="@string/start_typing"
         android:textAlignment="textStart" />
 
     <LinearLayout
