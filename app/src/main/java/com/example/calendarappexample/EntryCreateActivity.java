@@ -85,13 +85,13 @@ public class EntryCreateActivity extends AppCompatActivity {
 
         for (int i = 0; i < strArray.length; i++) {
             String contentword = strArray[i];
-            if ((contentword.charAt(0) == '<') && contentword.contains(">" )) {
+            if ((contentword.charAt(0) == '~') && contentword.charAt(contentword.length() - 1) == '~') {
                 //actual init variables
                 String name = strArray[i + 1];
                 int generatednum;
                 if (name.charAt(0) == '*') {
                     Random randint = new Random();
-                    if (contentword.equals("<maleName>" )) {
+                    if (contentword.equals("~maleName~" )) {
                         OGmaleNames.add(name);
                         int malenum = OGmaleNames.indexOf(name);
                         generatednum = randint.nextInt(42);
@@ -100,7 +100,7 @@ public class EntryCreateActivity extends AppCompatActivity {
                         generatedMaleNamesInUse.add(malenum, generatedMaleNam);
                         censoredText[i] = "";
                     }
-                    else if (contentword.equals("<femaleName>" )) {
+                    else if (contentword.equals("~femaleName~" )) {
                         OGfemaleNames.add(name);
                         int femalenum = OGfemaleNames.indexOf(name);
                         generatednum = randint.nextInt(65);
@@ -109,7 +109,7 @@ public class EntryCreateActivity extends AppCompatActivity {
                         generatedFemaleNamesInUse.add(femalenum, generatedFemaleNam);
                         censoredText[i] = "";
                     }
-                    else if (contentword.equals("<nonbinaryName>" )) {
+                    else if (contentword.equals("~nonbinaryName~" )) {
                         OGnonbinaryNames.add(name);
                         int nonbinarynum = OGnonbinaryNames.indexOf(name);
                         generatednum = randint.nextInt(91);
