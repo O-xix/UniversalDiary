@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     public static SQLiteDBHelper SQLiteDB, PublishedSQLiteDB;
-    public static Context mainActivityContext;
+    public Context mainActivityContext;
 
     //Finding Date
     @Override
@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     public static void grabEntriesFromDB() {
         Cursor res = SQLiteDB.getdata();
         if(res.getCount() == 0) {
-            Toast.makeText(mainActivityContext, "No Entry Exists", Toast.LENGTH_SHORT).show();
             return;
         }
         while(res.moveToNext()){
@@ -112,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     public static void grabPublishedEntriesFromDB() {
         Cursor res = PublishedSQLiteDB.getdata();
         if(res.getCount() == 0) {
-            Toast.makeText(mainActivityContext, "No Entry Exists", Toast.LENGTH_SHORT).show();
             return;
         }
         while(res.moveToNext()){

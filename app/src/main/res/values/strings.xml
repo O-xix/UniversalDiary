@@ -22,8 +22,8 @@
     <string name="monthYear">Feb 2021</string>
     <string name="explore">Explore</string>
     <string name="hourtv">HourTV</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
+    <string name="title_activity_login">Please Login In</string>
+    <string name="prompt_email">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -31,5 +31,5 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="start_typing">Start Typing... \n\n To censor on PUBLISH: \n Use \n ~maleName~ for male names, \n ~femaleName~ for female names, \n ~nonbinaryName~ for other names (ex. places, schools, nonbinary people) \n followed by *(name) and everytime you use it in your entry, put an asterisk before and a space after every usage of the name. \n\n ex. \n \'Hello, ~nonbinaryName~ *Teja Teja *Teja *Teja ,\' \n\n Will publish \n \'Hello, Jaxet Teja Jaxet Jaxet ,\'</string>
+    <string name="start_typing">Start Typing… \n\n To censor on PUBLISH: \n Use \n ~maleName~ for male names, \n ~femaleName~ for female names, \n ~nonbinaryName~ for other names (ex. places, schools, nonbinary people) \n followed by *(name) and every time you use it in your entry, put an asterisk before and a space after every usage of the name. \n\n ex. \n \'Hello, ~nonbinaryName~ *Teja Teja *Teja *Teja ,\' \n\n Will publish \n \'Hello, Jaxet Teja Jaxet Jaxet ,\'</string>
 </resources>
