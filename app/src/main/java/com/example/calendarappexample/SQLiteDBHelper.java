@@ -13,7 +13,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, date TEXT, time TEXT primary key)");
+        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, pub INTEGER, date TEXT, time TEXT primary key)");
     }
 
     @Override
@@ -21,7 +21,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists EntryList");
     }
 
-    public Boolean insertentry(String title, String text, String comments, int numComments, String date, String time) {
+    public Boolean insertentry(String title, String text, String comments, int numComments, String date, String time, int pub) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title", title);
@@ -30,6 +30,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         contentValues.put("time", time);
         contentValues.put("comments", comments);
         contentValues.put("numComments", numComments);
+        contentValues.put("pub", pub);
         long result = DB.insert("EntryList", null, contentValues);
 
         if(result == -1) {
@@ -45,9 +46,9 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("comments", comments);
         contentValues.put("numComments", numComments);
-        Cursor cursor = DB.rawQuery("Select * from EntryList where title = ?", new String[]{title});
+        Cursor cursor = DB.rawQuery("Select * from EntryList where time = ?", new String[]{time});
         if (cursor.getCount() > 0) {
-            long result = DB.update("EntryList", contentValues, "title=?", new String[]{title});
+            long result = DB.update("EntryList", contentValues, "time=?", new String[]{time});
             if (result == -1) {
                 return false;
             }
@@ -63,6 +64,18 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
     public Cursor getdata() {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from EntryList", null);
+        return cursor;
+    }
+
+//    public Cursor getSavedData() {
+//        SQLiteDatabase DB = this.getWritableDatabase();
+//        Cursor cursor = DB.rawQuery("Select * from EntryList where ", null);
+//        return cursor;
+//    }
+
+    public Cursor getPublishedData() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from EntryList where pub = 1 ", null);
         return cursor;
     }
 }

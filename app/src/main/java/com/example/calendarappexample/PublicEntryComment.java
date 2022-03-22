@@ -4,7 +4,7 @@ import static com.example.calendarappexample.CalendarUtils.parsedDate;
 import static com.example.calendarappexample.CalendarUtils.parsedTime;
 import static com.example.calendarappexample.Entry.entriesList;
 import static com.example.calendarappexample.Entry.publicEntriesList;
-import static com.example.calendarappexample.MainActivity.PublishedSQLiteDB;
+//import static com.example.calendarappexample.MainActivity.PublishedSQLiteDB;
 import static com.example.calendarappexample.MainActivity.SQLiteDB;
 import static com.example.calendarappexample.MainActivity.grabEntriesFromDB;
 import static com.example.calendarappexample.MainActivity.grabPublishedEntriesFromDB;
@@ -63,14 +63,14 @@ public class PublicEntryComment extends AppCompatActivity {
             }
         }
         selectedEntry.setNumComments(selectedEntry.getNumComments() + 1);
-        Cursor res = PublishedSQLiteDB.getdata();
+        Cursor res = SQLiteDB.getdata();
         while(res.moveToNext()){
-            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(4)), parsedTime(res.getString(5)));
+            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(5)), parsedTime(res.getString(6)));
             if(selectedEntry.getTitle().equals(entry.getTitle()) && selectedEntry.getTime() == entry.getTime() && selectedEntry.getDate() == entry.getDate()) {
                 SQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
             }
         }
-        PublishedSQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
+        SQLiteDB.updateentry(selectedEntry.getTitle(), selectedEntry.getText(), selectedEntry.getComments(), selectedEntry.getNumComments(), CalendarUtils.formattedDate(selectedEntry.getDate()), CalendarUtils.formattedTime(selectedEntry.getTime()));
         entriesList.clear();
         grabEntriesFromDB();
         publicEntriesList.clear();

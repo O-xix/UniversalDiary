@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    public static SQLiteDBHelper SQLiteDB, PublishedSQLiteDB;
+    public static SQLiteDBHelper SQLiteDB;
+    //public static SQLiteDBHelper PublishedSQLiteDB;
     public Context mainActivityContext;
 
     //Finding Date
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         startActivity(new Intent(this, LoginActivity.class));
         mainActivityContext = this;
         SQLiteDB = new SQLiteDBHelper(this);
-        PublishedSQLiteDB = new SQLiteDBHelper(this);
+        //PublishedSQLiteDB = new SQLiteDBHelper(this);
         grabEntriesFromDB();
         grabPublishedEntriesFromDB();
         setContentView(R.layout.activity_main);
@@ -103,18 +104,18 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
             return;
         }
         while(res.moveToNext()){
-            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(4)), parsedTime(res.getString(5)));
+            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(5)), parsedTime(res.getString(6)));
             entriesList.add(entry);
         }
     }
 
     public static void grabPublishedEntriesFromDB() {
-        Cursor res = PublishedSQLiteDB.getdata();
+        Cursor res = SQLiteDB.getPublishedData();
         if(res.getCount() == 0) {
             return;
         }
         while(res.moveToNext()){
-            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(4)), parsedTime(res.getString(5)));
+            Entry entry = new Entry(res.getString(0), res.getString(1), res.getString(2), res.getInt(3), parsedDate(res.getString(5)), parsedTime(res.getString(6)));
             publicEntriesList.add(entry);
         }
     }

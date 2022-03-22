@@ -2,7 +2,7 @@ package com.example.calendarappexample;
 
 import static com.example.calendarappexample.Entry.entriesList;
 import static com.example.calendarappexample.Entry.publicEntriesList;
-import static com.example.calendarappexample.MainActivity.PublishedSQLiteDB;
+//import static com.example.calendarappexample.MainActivity.PublishedSQLiteDB;
 import static com.example.calendarappexample.MainActivity.SQLiteDB;
 import static com.example.calendarappexample.MainActivity.grabEntriesFromDB;
 import static com.example.calendarappexample.MainActivity.grabPublishedEntriesFromDB;
@@ -48,7 +48,7 @@ public class EntryCreateActivity extends AppCompatActivity {
     public void saveEntryAction(View view) {
         String entryTitle = entryTitleET.getText().toString();
         String entryText = entryTextET.getText().toString();
-        SQLiteDB.insertentry(entryTitle, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
+        SQLiteDB.insertentry(entryTitle, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time), 0);
         entriesList.clear();
         grabEntriesFromDB();
         Toast.makeText(this, entryTitle + " saved succesfully!", Toast.LENGTH_SHORT).show();
@@ -61,13 +61,13 @@ public class EntryCreateActivity extends AppCompatActivity {
         //convert into publishable entry
         String entryPublishText = censorEntry(entryText);
 
-        SQLiteDB.insertentry(entryTitle, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
-        PublishedSQLiteDB.insertentry(entryTitle, entryPublishText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time));
+        SQLiteDB.insertentry(entryTitle, entryText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time), 1);
+        //PublishedSQLiteDB.insertentry(entryTitle, entryPublishText, "", 0, CalendarUtils.formattedDate(CalendarUtils.selectedDate), CalendarUtils.formattedTime(time), 1);
         entriesList.clear();
         grabEntriesFromDB();
         publicEntriesList.clear();
         grabPublishedEntriesFromDB();
-        Toast.makeText(this, entryTitle + " saved succesfully!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, entryTitle + " published succesfully!", Toast.LENGTH_SHORT).show();
         finish();
     }
 
