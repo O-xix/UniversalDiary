@@ -52,7 +52,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="5"
-        android:hint="@string/start_typing"
+        android:hint="@string/start_typing_alpha"
         android:textAlignment="textStart" />
 
     <LinearLayout

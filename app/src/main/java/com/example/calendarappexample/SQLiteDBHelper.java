@@ -13,7 +13,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, date TEXT, time TEXT, constraint PK_Entry primary key (date, time))");
+        DB.execSQL("create Table EntryList(title TEXT, text TEXT, comments TEXT, numComments INTEGER, date TEXT, time TEXT primary key)");
     }
 
     @Override
