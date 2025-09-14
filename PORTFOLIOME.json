@@ -1,0 +1,17 @@
+{
+  "title": "Universal Diary",
+  "subtitle": "Android journaling application",
+  "description": "A mobile journaling app created for the IB Computer Science SL Internal Assessment. Users can log, view, and manage diary entries with calendar-based navigation, CRUD functionality, and persistent local storage. The prototype emphasizes usability, Android UI design, and data persistence.",
+  "technologies": [
+    "Java",
+    "Android Studio",
+    "SQLite",
+    "Android SDK"
+  ],
+  "category": "School",
+  "links": {
+    "github": "https://github.com/O-xix/UniversalSpace",
+    "demo": ""
+  },
+  "image": "/preview/universal_diary.jpg"
+}
